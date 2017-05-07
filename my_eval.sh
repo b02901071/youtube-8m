@@ -22,7 +22,6 @@ python eval.py \
 --model=${model} \
 --train_dir=${train_dir} \
 --frame_features=${frame_features} \
---feature_names=${feature_names} \
---feature_sizes=${feature_sizes} \
+--feature_names="${feature_names}" \
+--feature_sizes="${feature_sizes}" \
 --run_once=${run_once}
-#--lstm_layers=${lstm_layers}

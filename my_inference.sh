@@ -22,7 +22,7 @@ python inference.py \
 --model=${model} \
 --train_dir=${train_dir} \
 --frame_features=${frame_features} \
---feature_names=${feature_names} \
---feature_sizes=${feature_sizes} \
+--feature_names="${feature_names}" \
+--feature_sizes="${feature_sizes}" \
 --output_file=${test_output_file} \
 --batch_size=${test_batch_size}

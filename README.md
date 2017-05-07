@@ -1,5 +1,6 @@
 # YouTube-8M Tensorflow Starter Code
 
+---
 ## Customized Usage
 
 Arguments are set in `config.sh`. It is allowed to edit `config.sh`, or write
@@ -9,12 +10,12 @@ your own shell script for settings.
 *  `config.sh`: Settings.
 *  `my_train.sh`, `my_eval.sh`, `my_inference.sh`
 ```sh
-Usage:
-	bash my_train.sh [--gpu=0] [--config=config.sh]
-	bash my_eval.sh [--gpu=0] [--config=config.sh]
-	bash my_inference.sh [--gpu=0] [--config=config.sh]
+bash my_train.sh [--gpu=0] [--config=config.sh]
+bash my_eval.sh [--gpu=0] [--config=config.sh]
+bash my_inference.sh [--gpu=0] [--config=config.sh]
 ```
 *  `trytry.sh`, `tt.sh`: Only for shell script tests.
+---
 
 ## Outline
 

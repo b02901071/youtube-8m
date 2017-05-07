@@ -15,6 +15,8 @@ esac
 done
 
 . ./${config:-config.sh}
+echo ${train_dir}
+echo ${feature_sizes}
 
 CUDA_VISIBLE_DEVICES=${gpu:-0} \
 python train.py \
@@ -22,8 +24,8 @@ python train.py \
 --model=${model} \
 --train_dir=${train_dir} \
 --frame_features=${frame_features} \
---feature_names=${feature_names} \
---feature_sizes=${feature_sizes} \
+--feature_names="${feature_names}" \
+--feature_sizes="${feature_sizes}" \
 --base_learning_rate=${base_learning_rate} \
 --batch_size=${train_batch_size} \
 --lstm_layers=${lstm_layers} \
