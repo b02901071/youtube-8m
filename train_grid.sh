@@ -7,5 +7,5 @@ python train.py \
 --feature_names="rgb, audio" \
 --feature_sizes="1024, 128" \
 --base_learning_rate=0.0002 \
---batch_size=256 #\
-#--lstm_layers=5
+--batch_size=256 \
+--max_steps=120000 
