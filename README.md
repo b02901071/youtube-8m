@@ -10,9 +10,9 @@ your own shell script for settings.
 *  `config.sh`: Settings.
 *  `my_train.sh`, `my_eval.sh`, `my_inference.sh`
 ```sh
-bash my_train.sh [--gpu=0] [--config=config.sh]
-bash my_eval.sh [--gpu=0] [--config=config.sh]
-bash my_inference.sh [--gpu=0] [--config=config.sh]
+bash my_train.sh [--config='config.sh'] [--gpu=0]
+bash my_eval.sh [--config='config.sh'] [--dir='models/...'] [--gpu=0]
+bash my_inference.sh [--config='config.sh'] [--dir='models/...'] [--gpu=0]
 ```
 *  `trytry.sh`, `tt.sh`: Only for shell script tests.
 ---

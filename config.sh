@@ -17,5 +17,3 @@ train_dir=models/frame_level_${model_underscore}_${feature_names_underscore}
 if [[ ${lstm_layers} -ne 2 ]]; then
 	train_dir=${train_dir}_${lstm_layers}_layers
 fi
-test_output_file=${train_dir}/predictions.csv
-
