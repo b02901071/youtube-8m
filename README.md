@@ -8,10 +8,18 @@ your own shell script for settings.
 
 ### New files
 *  `config.sh`: Settings.
-*  `my_train.sh`, `my_eval.sh`, `my_inference.sh`
+*  `my_train.sh`
 ```sh
 bash my_train.sh [--config='config.sh'] [--gpu=0]
+```
+*  `my_eval.sh`: If the directory of the model is defined, then the config file 
+is not neccessarily needed.
+```sh
 bash my_eval.sh [--config='config.sh'] [--dir='models/...'] [--gpu=0]
+```
+*  `my_inference.sh`: If the directory of the model is defined, then the config 
+file is not neccessarily needed.
+```sh
 bash my_inference.sh [--config='config.sh'] [--dir='models/...'] [--gpu=0]
 ```
 *  `trytry.sh`, `tt.sh`: Only for shell script tests.
