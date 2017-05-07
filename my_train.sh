@@ -15,8 +15,6 @@ esac
 done
 
 . ./${config:-config.sh}
-echo ${train_dir}
-echo ${feature_sizes}
 
 CUDA_VISIBLE_DEVICES=${gpu:-0} \
 python train.py \
