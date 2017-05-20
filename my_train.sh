@@ -27,4 +27,6 @@ python train.py \
 --base_learning_rate=${base_learning_rate} \
 --batch_size=${train_batch_size} \
 --lstm_layers=${lstm_layers} \
---max_steps=${max_steps} 
+--max_steps=${max_steps} \
+--iterations=50 \
+--tied=${tied} 
