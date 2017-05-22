@@ -239,6 +239,7 @@ class YT8MFrameFeatureReader(BaseReader):
 
     num_frames = -1  # the number of frames in the video
     feature_matrices = [None] * num_features  # an array of different features
+    print("================================ num_feature = ", num_features, features)
     for feature_index in range(num_features):
       feature_matrix, num_frames_in_this_feature = self.get_video_matrix(
           features[self.feature_names[feature_index]],
