@@ -378,7 +378,17 @@ class Trainer(object):
 
     target, device_fn = self.start_server_if_distributed()
 
-    meta_filename = self.get_meta_filename(start_new_model, self.train_dir)
+    #meta_filename = self.get_meta_filename(start_new_model, self.train_dir)
+    all_model_checkpoint_paths = os.listdir(self.train_dir)
+    all_model_checkpoint_paths = [a for a in all_model_checkpoint_paths if "model" in a]
+    all_model_checkpoint_paths = [a[:-5] for a in all_model_checkpoint_paths if "meta" in a]
+    #print all_model_checkpoint_paths
+    all_model_checkpoint_paths.sort(key=lambda x:int(x.split('-')[-1]))
+    all_model_checkpoint_paths = [self.train_dir + '/' + a for a in all_model_checkpoint_paths]
+    checkpoint_num = -2
+    model_checkpoint_path = all_model_checkpoint_paths[checkpoint_num]
+    meta_filename = model_checkpoint_path + ".meta"
+    tf.train.update_checkpoint_state(self.train_dir, model_checkpoint_path, all_model_checkpoint_paths[:checkpoint_num])
 
     with tf.Graph().as_default() as graph:
 
