@@ -256,14 +256,37 @@ class YT8MFrameFeatureReader(BaseReader):
 
     # cap the number of frames at self.max_frames
     num_frames = tf.minimum(num_frames, self.max_frames)
-
+    #sess = tf.InteractiveSession()
+    print("==================================== feature_matrices = ",feature_matrices)
+    #print("==================================== num_frames = ", num_frames.eval())
     # concatenate different features
-    video_matrix = tf.concat(feature_matrices, 1)
+    #video_matrix = tf.concat(feature_matrices, 1)
+    #sess = tf.Session()
+    #with sess.as_default():
+    rgb = feature_matrices[0]
+    audio = feature_matrices[1]
+    blob = []
+    for i in range(rgb.get_shape()[0]):
+        rgb_slice = rgb[i,:]
+        rgb_slice = tf.expand_dims(rgb_slice,0)
+        audio_slice = audio[i,:]
+        audio_slice = tf.expand_dims(audio_slice,0)
+        print(audio_slice)
+        audio_blob = tf.zeros((1,rgb.get_shape()[1]-audio.get_shape()[1]),dtype=tf.float32)
+        audio_blob = tf.concat([audio_blob, audio_slice],1)
+        
+        blob.append(rgb_slice)
+        blob.append(audio_blob)
+    video_matrix = tf.stack(blob)
+        #audio_blob = tf.zeros((feature_matrices[0].get_shape()[0],feature_matrices[0].get_shape()[1] - feature_matrices[1].get_shape()[1]))
+        #audio_blob = tf.concat(audio_blob,feature_matrices[-1])
 
+    num_frames = tf.constant(video_matrix.get_shape[0])
     # convert to batch format.
     # TODO: Do proper batch reads to remove the IO bottleneck.
     batch_video_ids = tf.expand_dims(contexts["video_id"], 0)
-    batch_video_matrix = tf.expand_dims(video_matrix, 0)
+    #batch_video_matrix = tf.expand_dims(video_matrix, 0)
+    batch_video_matrix = video_matrix
     batch_labels = tf.expand_dims(labels, 0)
     batch_frames = tf.expand_dims(num_frames, 0)
 

@@ -17,8 +17,8 @@ done
 . ./${config:-config.sh}
 
 CUDA_VISIBLE_DEVICES=${gpu:-0} \
-python train.py \
---train_data_pattern='/share/corpus/yt8m/frame_level/train/train*.tfrecord' \
+hr -H python train.py \
+--train_data_pattern='../youtube-8m/frame_features/train*.tfrecord' \
 --model=${model} \
 --train_dir=${train_dir} \
 --frame_features=${frame_features} \
